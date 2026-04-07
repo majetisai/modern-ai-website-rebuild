@@ -6,7 +6,6 @@ import {
   Workflow, Globe, TrendingUp, BrainCircuit,
   MessageSquare, BarChart3, Store, Plug, ArrowRight
 } from "lucide-react";
-import GlassCard from "@/components/ui/GlassCard";
 import SectionHeading from "@/components/ui/SectionHeading";
 
 const iconMap: Record<string, React.ElementType> = {
@@ -16,51 +15,57 @@ const iconMap: Record<string, React.ElementType> = {
 const overviewServices = [
   {
     icon: "BrainCircuit",
-    title: "RAG & Document Intelligence",
-    description: "Instant, accurate answers from your knowledge base — cited, never hallucinated.",
+    title: "Smart Document Search",
+    description: "Your team gets instant, accurate answers from your own documents and knowledge base — no more digging through files.",
     href: "/services#rag-systems",
+    color: "bg-purple-50 text-purple-600",
   },
   {
     icon: "MessageSquare",
-    title: "AI Chatbots & Assistants",
-    description: "Claude-powered bots that qualify leads, book appointments, and support customers 24/7.",
+    title: "AI Chatbots and Assistants",
+    description: "Always-on virtual assistants that answer customer questions, qualify leads, and book appointments around the clock.",
     href: "/services#chatbots",
+    color: "bg-cyan-50 text-cyan-600",
   },
   {
     icon: "Workflow",
     title: "Workflow Automation",
-    description: "Eliminate manual, repetitive tasks. Let intelligent processes run themselves.",
+    description: "We eliminate the manual, repetitive tasks that drain your team's time and energy so they can focus on what matters.",
     href: "/services#automated-workflows",
+    color: "bg-orange-50 text-orange-600",
   },
   {
     icon: "Store",
-    title: "Custom POS & CRM",
-    description: "Purpose-built systems that fit exactly how you work — not the other way around.",
+    title: "Custom POS and CRM Systems",
+    description: "Purpose-built point-of-sale and customer management systems designed around exactly how you do business.",
     href: "/services#pos-crm",
+    color: "bg-yellow-50 text-yellow-600",
   },
   {
     icon: "TrendingUp",
-    title: "Sales & Marketing Automation",
-    description: "Capture, nurture, and convert leads automatically around the clock.",
+    title: "Sales and Marketing Automation",
+    description: "Capture leads, send follow-ups, and nurture prospects automatically so you never let a potential customer slip away.",
     href: "/services#sales-marketing",
+    color: "bg-green-50 text-green-600",
   },
   {
     icon: "Plug",
     title: "System Integrations",
-    description: "Connect all your tools into a seamless ecosystem. End data silos forever.",
+    description: "We connect all your existing tools so your data flows seamlessly and your team stops copying information between systems.",
     href: "/services#integrations",
+    color: "bg-red-50 text-red-600",
   },
 ];
 
 export default function ServicesOverviewSection() {
   return (
-    <section className="py-20 md:py-28 bg-[#0d1428]">
+    <section className="py-20 md:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           badge="What We Build"
-          title="AI Solutions That"
-          titleHighlight="Drive Real Results"
-          subtitle="From intelligent chatbots to full CRM systems — every solution is built with Claude AI and designed to solve your specific business challenges."
+          title="AI Solutions That Solve"
+          titleHighlight="Real Business Problems"
+          subtitle="From intelligent assistants to fully custom systems, everything we build is designed to address the specific challenges your business faces every day."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
@@ -75,17 +80,17 @@ export default function ServicesOverviewSection() {
                 transition={{ duration: 0.5, delay: i * 0.07 }}
               >
                 <Link href={service.href} className="block h-full">
-                  <div className="glass glass-hover rounded-2xl p-6 h-full flex flex-col gap-4 group transition-all duration-300">
-                    <div className="w-12 h-12 rounded-xl bg-[#009991]/15 border border-[#009991]/20 flex items-center justify-center group-hover:bg-[#009991]/25 transition-colors">
-                      <Icon className="w-6 h-6 text-[#009991]" />
+                  <div className="card p-6 h-full flex flex-col gap-4 group">
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${service.color}`}>
+                      <Icon className="w-6 h-6" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-white font-bold text-lg mb-2 group-hover:text-[#00b8af] transition-colors">
+                      <h3 className="text-[#3B3B3B] font-bold text-lg mb-2 group-hover:text-[#009991] transition-colors">
                         {service.title}
                       </h3>
-                      <p className="text-[#8b9cc8] text-sm leading-relaxed">{service.description}</p>
+                      <p className="text-[#6b7280] text-sm leading-relaxed">{service.description}</p>
                     </div>
-                    <div className="flex items-center gap-1 text-[#009991] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+                    <div className="flex items-center gap-1 text-[#009991] text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-300">
                       Learn more <ArrowRight className="w-4 h-4" />
                     </div>
                   </div>
@@ -96,11 +101,8 @@ export default function ServicesOverviewSection() {
         </div>
 
         <div className="text-center">
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-2 text-[#009991] font-semibold hover:text-[#00b8af] transition-colors"
-          >
-            View all 8 services <ArrowRight className="w-4 h-4" />
+          <Link href="/services" className="inline-flex items-center gap-2 text-[#009991] font-semibold hover:text-[#007a73] transition-colors">
+            Explore all 8 services we offer <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </div>

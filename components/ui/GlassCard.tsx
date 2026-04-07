@@ -6,25 +6,20 @@ import { motion } from "framer-motion";
 interface GlassCardProps {
   children: React.ReactNode;
   className?: string;
-  variant?: "default" | "hover-glow" | "featured";
+  variant?: "default" | "hover" | "teal" | "featured";
   animate?: boolean;
   onClick?: () => void;
-  as?: "div" | "article" | "section" | "li";
 }
 
 export default function GlassCard({
-  children,
-  className,
-  variant = "default",
-  animate = false,
-  onClick,
-  as: Tag = "div",
+  children, className, variant = "default", animate = false, onClick,
 }: GlassCardProps) {
   const baseClasses = cn(
-    "glass rounded-2xl p-6",
-    variant === "hover-glow" && "glass-hover transition-all duration-300 cursor-pointer",
-    variant === "featured" &&
-      "border-[#009991]/40 shadow-[0_0_40px_rgba(0,153,145,0.15)] bg-[rgba(0,153,145,0.08)]",
+    "rounded-2xl p-6",
+    variant === "default" && "card",
+    variant === "hover" && "card cursor-pointer",
+    variant === "teal" && "card-teal",
+    variant === "featured" && "bg-[#009991] text-white rounded-2xl p-6 shadow-[0_8px_30px_rgba(0,153,145,0.3)]",
     onClick && "cursor-pointer",
     className
   );
@@ -38,16 +33,12 @@ export default function GlassCard({
         viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         onClick={onClick}
-        whileHover={variant === "hover-glow" ? { y: -4 } : undefined}
+        whileHover={variant === "hover" ? { y: -4 } : undefined}
       >
         {children}
       </motion.div>
     );
   }
 
-  return (
-    <Tag className={baseClasses} onClick={onClick}>
-      {children}
-    </Tag>
-  );
+  return <div className={baseClasses} onClick={onClick}>{children}</div>;
 }

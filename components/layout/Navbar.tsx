@@ -4,10 +4,10 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
-import { NAV_LINKS, PHONE, PHONE_HREF, COMPANY_NAME } from "@/lib/utils/constants";
-import Button from "@/components/ui/Button";
+import { NAV_LINKS, PHONE, PHONE_HREF } from "@/lib/utils/constants";
+import Logo from "@/components/ui/Logo";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -20,7 +20,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsMobileOpen(false);
   }, [pathname]);
@@ -30,27 +29,17 @@ export default function Navbar() {
       <motion.header
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
           isScrolled
-            ? "glass border-b border-[#009991]/10 py-3"
-            : "bg-transparent py-5"
+            ? "bg-white shadow-sm border-b border-gray-100 py-3"
+            : "bg-white/95 backdrop-blur-sm py-4"
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 rounded-lg bg-[#009991] flex items-center justify-center teal-glow group-hover:scale-110 transition-transform">
-                <Zap className="w-4 h-4 text-white" strokeWidth={2.5} />
-              </div>
-              <div>
-                <span className="text-white font-bold text-lg leading-none">Modern</span>
-                <span className="gradient-text font-bold text-lg leading-none"> AI</span>
-                <span className="text-[#8b9cc8] text-xs block leading-none -mt-0.5">Solutions</span>
-              </div>
-            </Link>
+            <Logo size="md" />
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-1">
@@ -61,8 +50,8 @@ export default function Navbar() {
                   className={cn(
                     "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200",
                     pathname === link.href
-                      ? "text-[#009991] bg-[#009991]/10"
-                      : "text-[#8b9cc8] hover:text-white hover:bg-white/5"
+                      ? "text-[#009991] bg-[#D9FFFD]"
+                      : "text-[#3B3B3B] hover:text-[#009991] hover:bg-[#f0fffe]"
                   )}
                 >
                   {link.label}
@@ -71,22 +60,26 @@ export default function Navbar() {
             </nav>
 
             {/* Desktop CTA */}
-            <div className="hidden md:flex items-center gap-3">
+            <div className="hidden md:flex items-center gap-4">
               <a
                 href={PHONE_HREF}
-                className="text-sm text-[#8b9cc8] hover:text-[#009991] transition-colors font-medium"
+                className="flex items-center gap-1.5 text-sm text-[#6b7280] hover:text-[#009991] transition-colors font-medium"
               >
+                <Phone className="w-3.5 h-3.5" />
                 {PHONE}
               </a>
-              <Button href="/consulting" size="sm" variant="teal">
+              <Link
+                href="/consulting"
+                className="btn-teal text-sm px-5 py-2.5 rounded-lg"
+              >
                 Free Consultation
-              </Button>
+              </Link>
             </div>
 
-            {/* Mobile Menu Toggle */}
+            {/* Mobile Toggle */}
             <button
               onClick={() => setIsMobileOpen(!isMobileOpen)}
-              className="md:hidden p-2 rounded-lg text-[#8b9cc8] hover:text-white hover:bg-white/5 transition-colors"
+              className="md:hidden p-2 rounded-lg text-[#3B3B3B] hover:bg-gray-100 transition-colors"
               aria-label="Toggle menu"
             >
               {isMobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -99,17 +92,17 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-0 left-0 right-0 bottom-0 z-40 glass pt-20 px-4"
+            className="fixed top-0 left-0 right-0 bottom-0 z-40 bg-white pt-20 px-4 overflow-y-auto"
           >
-            <nav className="flex flex-col gap-2 mt-4">
+            <nav className="flex flex-col gap-1 mt-4">
               {NAV_LINKS.map((link, i) => (
                 <motion.div
                   key={link.href}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -16 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
                 >
@@ -118,8 +111,8 @@ export default function Navbar() {
                     className={cn(
                       "block px-4 py-3 rounded-xl text-base font-medium transition-all",
                       pathname === link.href
-                        ? "text-[#009991] bg-[#009991]/10"
-                        : "text-[#8b9cc8] hover:text-white hover:bg-white/5"
+                        ? "text-[#009991] bg-[#D9FFFD]"
+                        : "text-[#3B3B3B] hover:text-[#009991] hover:bg-[#f0fffe]"
                     )}
                   >
                     {link.label}
@@ -129,18 +122,18 @@ export default function Navbar() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.35 }}
-                className="mt-6 pt-6 border-t border-white/10 flex flex-col gap-3"
+                transition={{ delay: 0.3 }}
+                className="mt-6 pt-6 border-t border-gray-100 flex flex-col gap-3"
               >
-                <a
-                  href={PHONE_HREF}
-                  className="text-center text-[#8b9cc8] font-medium"
-                >
-                  {PHONE}
+                <a href={PHONE_HREF} className="text-center text-[#6b7280] font-medium flex items-center justify-center gap-2">
+                  <Phone className="w-4 h-4" /> {PHONE}
                 </a>
-                <Button href="/consulting" size="lg" variant="teal" className="w-full justify-center">
+                <Link
+                  href="/consulting"
+                  className="btn-teal justify-center text-center rounded-xl py-3"
+                >
                   Schedule Free Consultation
-                </Button>
+                </Link>
               </motion.div>
             </nav>
           </motion.div>

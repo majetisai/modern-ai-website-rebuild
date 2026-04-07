@@ -1,47 +1,44 @@
 @import "tailwindcss";
 
 /* ============================================================
-   MODERN AI SOLUTIONS — DESIGN SYSTEM TOKENS
-   All brand colors, fonts, and custom utilities live here.
-   Never hardcode #009991 — always use var(--color-teal-500).
+   MODERN AI SOLUTIONS — DESIGN SYSTEM
+   Brand Guide Colors — Last Updated 6/1/2025
+   Primary:   #009991  (ModernAI Teal)
+   Light:     #D9FFFD  (ModernAI Teal Light)
+   Dark:      #00504C  (ModernAI Teal Dark)
+   Graphite:  #3B3B3B  (Primary Text)
+   Gray:      #D5D5D5  (Light Borders/Dividers)
    ============================================================ */
 
 @theme inline {
-  /* ── Brand Teal ─────────────────────────────────────────── */
-  --color-teal-300: #4dd9d1;
-  --color-teal-400: #00b8af;
-  --color-teal-500: #009991;
-  --color-teal-600: #007a73;
-  --color-teal-700: #005c57;
+  /* Brand Teal */
+  --color-teal:        #009991;
+  --color-teal-light:  #D9FFFD;
+  --color-teal-dark:   #00504C;
+  --color-teal-mid:    #007a73;
+  --color-teal-hover:  #00b8af;
 
-  /* ── Navy Backgrounds ───────────────────────────────────── */
-  --color-navy-950: #040810;
-  --color-navy-900: #0a0f1e;
-  --color-navy-800: #0d1428;
-  --color-navy-700: #111827;
-  --color-navy-600: #1a2340;
-  --color-navy-500: #243058;
+  /* Backgrounds */
+  --color-bg:          #ffffff;
+  --color-bg-soft:     #f8fffe;
+  --color-bg-section:  #f4f4f4;
+  --color-bg-teal:     #e8fffe;
 
-  /* ── Text ────────────────────────────────────────────────── */
-  --color-text-primary: #f0f4ff;
-  --color-text-secondary: #8b9cc8;
-  --color-text-muted: #4a5580;
+  /* Text */
+  --color-text:        #3B3B3B;
+  --color-text-muted:  #6b7280;
+  --color-text-light:  #9ca3af;
 
-  /* ── Semantic ────────────────────────────────────────────── */
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
+  /* Borders */
+  --color-border:      #e5e7eb;
+  --color-border-teal: rgba(0, 153, 145, 0.25);
 
-  /* ── Fonts ───────────────────────────────────────────────── */
+  /* Font */
   --font-sans: var(--font-inter);
 }
 
-/* ── Global Resets ──────────────────────────────────────────── */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+/* Base */
+*, *::before, *::after { box-sizing: border-box; }
 
 html {
   scroll-behavior: smooth;
@@ -50,65 +47,112 @@ html {
 }
 
 body {
-  background-color: #0a0f1e;
-  color: #f0f4ff;
-  font-family: var(--font-sans), system-ui, sans-serif;
-  min-height: 100vh;
+  background-color: #ffffff;
+  color: #3B3B3B;
+  font-family: var(--font-sans), 'Open Sans', system-ui, sans-serif;
+  line-height: 1.7;
 }
 
-/* ── Glassmorphism Utilities ─────────────────────────────────── */
-.glass {
-  background: rgba(13, 20, 40, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 153, 145, 0.15);
-  border-radius: 1rem;
-}
-
-.glass-hover:hover {
-  border-color: rgba(0, 153, 145, 0.4);
-  box-shadow: 0 0 40px rgba(0, 153, 145, 0.12);
-}
-
-/* ── Teal Gradient Text ──────────────────────────────────────── */
+/* Teal Gradient Text */
 .gradient-text {
-  background: linear-gradient(135deg, #009991, #4dd9d1);
+  background: linear-gradient(135deg, #009991, #00b8af);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ── Teal Glow ───────────────────────────────────────────────── */
-.teal-glow {
-  box-shadow: 0 0 30px rgba(0, 153, 145, 0.25), 0 0 60px rgba(0, 153, 145, 0.1);
+/* Card Styles */
+.card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
 }
 
-/* ── Scrollbar ───────────────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 6px;
+.card:hover {
+  border-color: rgba(0, 153, 145, 0.35);
+  box-shadow: 0 8px 30px rgba(0, 153, 145, 0.12);
+  transform: translateY(-2px);
 }
 
-::-webkit-scrollbar-track {
-  background: #0a0f1e;
+.card-teal {
+  background: linear-gradient(135deg, #f0fffe, #e0fffc);
+  border: 1px solid rgba(0, 153, 145, 0.2);
+  border-radius: 1rem;
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(0, 153, 145, 0.4);
-  border-radius: 3px;
+/* Section helpers */
+.section-white  { background-color: #ffffff; }
+.section-soft   { background-color: #f8fffe; }
+.section-gray   { background-color: #f4f4f4; }
+.section-teal   { background: linear-gradient(135deg, #009991, #00504C); }
+.section-teal-light { background: linear-gradient(135deg, #e8fffe, #f0fffe); }
+
+/* Teal button */
+.btn-teal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #009991;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.75rem;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0, 153, 145, 0.25);
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 153, 145, 0.7);
+.btn-teal:hover {
+  background-color: #007a73;
+  box-shadow: 0 6px 24px rgba(0, 153, 145, 0.35);
+  transform: translateY(-1px);
 }
 
-/* ── Selection ───────────────────────────────────────────────── */
-::selection {
-  background: rgba(0, 153, 145, 0.3);
-  color: #f0f4ff;
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid #009991;
+  color: #009991;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  border-radius: 0.75rem;
+  transition: all 0.25s ease;
 }
 
-/* ── Focus Ring ──────────────────────────────────────────────── */
-:focus-visible {
-  outline: 2px solid #009991;
-  outline-offset: 2px;
+.btn-outline:hover {
+  background-color: #009991;
+  color: #ffffff;
 }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f4f4f4; }
+::-webkit-scrollbar-thumb { background: rgba(0,153,145,0.4); border-radius: 3px; }
+
+/* Selection */
+::selection { background: rgba(0,153,145,0.15); color: #3B3B3B; }
+
+/* Focus */
+:focus-visible { outline: 2px solid #009991; outline-offset: 2px; }
+
+/* Input base */
+.input-field {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #D5D5D5;
+  border-radius: 0.5rem;
+  background: #ffffff;
+  color: #3B3B3B;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #009991;
+  box-shadow: 0 0 0 3px rgba(0,153,145,0.1);
+}
+
+.input-field::placeholder { color: #9ca3af; }

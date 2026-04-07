@@ -6,7 +6,7 @@ import Link from "next/link";
 
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: "primary" | "outline" | "ghost" | "teal";
+  variant?: "primary" | "outline" | "ghost" | "white";
   size?: "sm" | "md" | "lg";
   href?: string;
   onClick?: () => void;
@@ -18,13 +18,13 @@ interface ButtonProps {
 
 const variants = {
   primary:
-    "bg-[#009991] text-white hover:bg-[#00b8af] shadow-[0_0_20px_rgba(0,153,145,0.3)] hover:shadow-[0_0_30px_rgba(0,153,145,0.5)]",
+    "bg-[#009991] text-white hover:bg-[#007a73] shadow-[0_4px_16px_rgba(0,153,145,0.25)] hover:shadow-[0_6px_24px_rgba(0,153,145,0.35)]",
   outline:
-    "border border-[#009991] text-[#009991] hover:bg-[#009991] hover:text-white",
+    "border-2 border-[#009991] text-[#009991] hover:bg-[#009991] hover:text-white",
   ghost:
-    "text-[#8b9cc8] hover:text-white hover:bg-white/5",
-  teal:
-    "bg-gradient-to-r from-[#009991] to-[#00b8af] text-white hover:from-[#007a73] hover:to-[#009991] shadow-[0_0_25px_rgba(0,153,145,0.35)] hover:shadow-[0_0_40px_rgba(0,153,145,0.55)]",
+    "text-[#3B3B3B] hover:text-[#009991] hover:bg-[#f0fffe]",
+  white:
+    "bg-white text-[#009991] hover:bg-[#f0fffe] shadow-md font-semibold",
 };
 
 const sizes = {
@@ -34,15 +34,8 @@ const sizes = {
 };
 
 export default function Button({
-  children,
-  variant = "primary",
-  size = "md",
-  href,
-  onClick,
-  className,
-  disabled,
-  type = "button",
-  external,
+  children, variant = "primary", size = "md",
+  href, onClick, className, disabled, type = "button", external,
 }: ButtonProps) {
   const classes = cn(
     "inline-flex items-center justify-center gap-2 rounded-xl font-semibold transition-all duration-300 cursor-pointer",
@@ -52,19 +45,11 @@ export default function Button({
     className
   );
 
-  const motionProps = {
-    whileHover: { scale: disabled ? 1 : 1.02 },
-    whileTap: { scale: disabled ? 1 : 0.98 },
-  };
-
   if (href) {
     return (
-      <motion.div {...motionProps}>
-        <Link
-          href={href}
-          className={classes}
-          {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-        >
+      <motion.div whileHover={{ scale: disabled ? 1 : 1.02 }} whileTap={{ scale: disabled ? 1 : 0.98 }}>
+        <Link href={href} className={classes}
+          {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
           {children}
         </Link>
       </motion.div>
@@ -73,11 +58,9 @@ export default function Button({
 
   return (
     <motion.button
-      {...motionProps}
-      type={type}
-      onClick={onClick}
-      disabled={disabled}
-      className={classes}
+      whileHover={{ scale: disabled ? 1 : 1.02 }}
+      whileTap={{ scale: disabled ? 1 : 0.98 }}
+      type={type} onClick={onClick} disabled={disabled} className={classes}
     >
       {children}
     </motion.button>

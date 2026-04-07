@@ -1,216 +1,168 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Phone, Sparkles } from "lucide-react";
-import Button from "@/components/ui/Button";
-import { PHONE, PHONE_HREF, TAGLINE } from "@/lib/utils/constants";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Phone, CheckCircle } from "lucide-react";
+import { PHONE, PHONE_HREF } from "@/lib/utils/constants";
 
-// Particle canvas — teal dots on navy background
-function ParticleCanvas() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    // Respect prefers-reduced-motion
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    const resize = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
-    resize();
-    window.addEventListener("resize", resize);
-
-    const PARTICLE_COUNT = window.innerWidth < 768 ? 30 : 60;
-    const CONNECTION_DISTANCE = 120;
-    const TEAL = "rgba(0, 153, 145,";
-
-    interface Particle {
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      radius: number;
-    }
-
-    const particles: Particle[] = Array.from({ length: PARTICLE_COUNT }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.4,
-      vy: (Math.random() - 0.5) * 0.4,
-      radius: Math.random() * 2 + 1,
-    }));
-
-    let animId: number;
-
-    const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Move particles
-      particles.forEach((p) => {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-      });
-
-      // Draw connections
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < CONNECTION_DISTANCE) {
-            const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.3;
-            ctx.beginPath();
-            ctx.strokeStyle = `${TEAL} ${opacity})`;
-            ctx.lineWidth = 0.8;
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      // Draw dots
-      particles.forEach((p) => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `${TEAL} 0.7)`;
-        ctx.fill();
-      });
-
-      animId = requestAnimationFrame(draw);
-    };
-
-    draw();
-    return () => {
-      window.removeEventListener("resize", resize);
-      cancelAnimationFrame(animId);
-    };
-  }, []);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none"
-      aria-hidden
-    />
-  );
-}
-
-const words = ["Modernize", "Your", "Business", "with", "Strategic", "AI"];
+const highlights = [
+  "No long-term contracts required",
+  "Free initial consultation",
+  "Based right here in Southeast Missouri",
+];
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0f1e]">
-      {/* Background gradients */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#009991]/8 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-[#009991]/5 rounded-full blur-3xl" />
-        <div className="absolute top-0 right-0 w-72 h-72 bg-[#00b8af]/5 rounded-full blur-3xl" />
+    <section className="pt-28 pb-20 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+          {/* Left Content */}
+          <div>
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#D9FFFD] text-[#009991] text-sm font-semibold mb-6 border border-[#009991]/20"
+            >
+              <span className="w-2 h-2 rounded-full bg-[#009991] animate-pulse" />
+              Your Strategic AI Partner in Southeast Missouri
+            </motion.div>
+
+            {/* Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#3B3B3B] leading-tight mb-6"
+            >
+              Smarter Business
+              <br />
+              Starts with the{" "}
+              <span className="gradient-text">Right AI</span>
+            </motion.h1>
+
+            {/* Subheadline */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-lg text-[#6b7280] leading-relaxed mb-8 max-w-xl"
+            >
+              We build custom AI-powered tools and automation systems that help local businesses
+              save time, reduce manual work, and grow with confidence. No jargon, no guesswork
+              — just practical solutions that actually work.
+            </motion.p>
+
+            {/* Highlights */}
+            <motion.ul
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="space-y-2 mb-10"
+            >
+              {highlights.map((h) => (
+                <li key={h} className="flex items-center gap-2.5 text-[#3B3B3B] text-sm">
+                  <CheckCircle className="w-4 h-4 text-[#009991] shrink-0" />
+                  {h}
+                </li>
+              ))}
+            </motion.ul>
+
+            {/* CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-4 items-start"
+            >
+              <Link href="/consulting" className="btn-teal rounded-xl px-8 py-4 text-base">
+                Get a Free Assessment
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link href="/services" className="btn-outline rounded-xl px-8 py-4 text-base">
+                See What We Build
+              </Link>
+            </motion.div>
+
+            {/* Phone */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6 }}
+              className="mt-6"
+            >
+              <a href={PHONE_HREF} className="inline-flex items-center gap-2 text-sm text-[#6b7280] hover:text-[#009991] transition-colors">
+                <Phone className="w-4 h-4" />
+                Prefer to call? Reach us at {PHONE}
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Right Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="relative"
+          >
+            {/* Main image */}
+            {/* Source: Unsplash — https://unsplash.com/photos/people-sitting-down-near-table-with-assorted-laptop-computers-SYTO3xs06fU */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <Image
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop"
+                alt="Team collaborating on AI solutions"
+                width={800}
+                height={600}
+                className="w-full h-auto object-cover"
+                priority
+              />
+              {/* Teal overlay tint */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#009991]/10 to-transparent" />
+            </div>
+
+            {/* Floating stat card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-lg p-5 border border-gray-100"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-xl bg-[#D9FFFD] flex items-center justify-center">
+                  <svg className="w-6 h-6 text-[#009991]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+                    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                    <polyline points="16 7 22 7 22 13" />
+                  </svg>
+                </div>
+                <div>
+                  <div className="text-2xl font-extrabold text-[#009991]">40%</div>
+                  <div className="text-xs text-[#6b7280] font-medium">Average time saved</div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Floating badge */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 }}
+              className="absolute -top-4 -right-4 bg-[#009991] text-white rounded-2xl shadow-lg px-4 py-3"
+            >
+              <div className="text-xs font-semibold opacity-80">Businesses Served</div>
+              <div className="text-2xl font-extrabold">50+</div>
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
 
-      {/* Particle Canvas */}
-      <ParticleCanvas />
-
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-24">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex justify-center mb-8"
-        >
-          <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold bg-[#009991]/15 text-[#00b8af] border border-[#009991]/30">
-            <Sparkles className="w-4 h-4" />
-            Powered by Claude AI · {" "}
-            <span className="text-[#f0f4ff]">Jackson, Missouri</span>
-          </span>
-        </motion.div>
-
-        {/* Headline */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold leading-[1.05] mb-6">
-          {words.map((word, i) => (
-            <motion.span
-              key={i}
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 + i * 0.08, ease: "easeOut" }}
-              className={`inline-block mr-[0.25em] ${
-                word === "AI" ? "gradient-text" : "text-[#f0f4ff]"
-              }`}
-            >
-              {word}
-            </motion.span>
-          ))}
-        </h1>
-
-        {/* Subheadline */}
-        <motion.p
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="text-lg sm:text-xl md:text-2xl text-[#8b9cc8] max-w-3xl mx-auto mb-10 leading-relaxed"
-        >
-          Custom AI-powered software, automation, and intelligent systems
-          designed to eliminate inefficiency and accelerate growth —
-          built for <span className="text-[#f0f4ff] font-medium">Southeast Missouri</span> businesses.
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.85 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <Button href="/consulting" variant="teal" size="lg">
-            Schedule Free Consultation
-            <ArrowRight className="w-5 h-5" />
-          </Button>
-          <Button href="/services" variant="outline" size="lg">
-            Explore Our Services
-          </Button>
-        </motion.div>
-
-        {/* Phone */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1.1 }}
-          className="mt-8"
-        >
-          <a
-            href={PHONE_HREF}
-            className="inline-flex items-center gap-2 text-[#8b9cc8] hover:text-[#009991] transition-colors text-sm"
-          >
-            <Phone className="w-4 h-4" />
-            Or call us directly at {PHONE}
-          </a>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1.4 }}
-          className="mt-16 flex justify-center"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-6 h-10 rounded-full border-2 border-[#009991]/40 flex items-start justify-center p-1.5"
-          >
-            <div className="w-1.5 h-3 rounded-full bg-[#009991]/60" />
-          </motion.div>
-        </motion.div>
+      {/* Teal wave divider */}
+      <div className="mt-20">
+        <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
+          <path d="M0 30 Q360 60 720 30 Q1080 0 1440 30 L1440 60 L0 60 Z" fill="#f8fffe"/>
+        </svg>
       </div>
     </section>
   );

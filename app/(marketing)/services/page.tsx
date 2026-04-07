@@ -1,71 +1,67 @@
 import type { Metadata } from "next";
-import { BrainCircuit, ArrowRight } from "lucide-react";
+import { BrainCircuit } from "lucide-react";
 import ServiceCardsGrid from "@/components/sections/services/ServiceCardsGrid";
 import CtaSection from "@/components/sections/landing/CtaSection";
 
 export const metadata: Metadata = {
   title: "AI Services",
   description:
-    "Custom AI solutions built with Claude: RAG systems, chatbots, workflow automation, CRM, POS, system integrations, and more for Southeast Missouri businesses.",
+    "Custom AI solutions for Southeast Missouri businesses: workflow automation, chatbots, web apps, integrations, databases, and more.",
 };
 
-const problemsWesolve = [
-  "Outdated websites lacking features and integration",
-  "Siloed data requiring manual transfer and upkeep",
-  "Disconnected business systems that don't talk",
-  "Inefficient processes wasting staff time",
-  "Reactive decision-making instead of proactive",
-  "Spreadsheet management of critical data",
-  "Manual data entry eating up valuable hours",
-  "Lost leads due to slow manual follow-up",
-  "Delayed reporting and business insights",
-  "Generic tools that don't understand your business",
+const problemsWeSolve = [
+  "Outdated websites that are hard to update and do not attract customers",
+  "Data locked in spreadsheets with no way to get insights",
+  "Business systems that do not talk to each other",
+  "Repetitive tasks eating up your team's valuable time",
+  "Slow decision making because reports take too long",
+  "Leads falling through the cracks due to manual follow up",
+  "Manual data entry creating costly mistakes",
+  "Generic tools that do not fit how your business actually works",
+  "No visibility into what is happening across your operations",
+  "Growing pains that your current software cannot keep up with",
 ];
 
 export default function ServicesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-[#0a0f1e] relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-[#009991]/6 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#009991]/4 rounded-full blur-3xl" />
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <section className="pt-32 pb-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase bg-[#009991]/15 text-[#00b8af] border border-[#009991]/30 mb-6">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D9FFFD] text-[#009991] text-xs font-bold tracking-widest uppercase border border-[#009991]/20 mb-6">
               <BrainCircuit className="w-4 h-4" />
-              Built with Claude AI
-            </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#f0f4ff] leading-tight mb-6">
+              What We Build
+            </span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-[#3B3B3B] leading-tight mb-6">
               AI Solutions Built{" "}
               <span className="gradient-text">for Your Business</span>
             </h1>
-            <p className="text-[#8b9cc8] text-lg md:text-xl leading-relaxed max-w-2xl">
-              Every solution we build leverages Claude AI — Anthropic&apos;s most capable model
-              — to solve real business challenges with intelligence, accuracy, and reliability.
+            <p className="text-[#6b7280] text-lg md:text-xl leading-relaxed max-w-2xl">
+              Every solution we build is custom designed for your specific workflow, your team, and your goals.
+              No cookie-cutter software. Just tools that actually work for real businesses like yours.
             </p>
           </div>
         </div>
       </section>
 
       {/* Problems We Solve */}
-      <section className="py-16 bg-[#0d1428]">
+      <section className="py-16 bg-[#f8fffe]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="glass rounded-2xl p-8 md:p-10">
-            <h2 className="text-2xl font-bold text-white mb-2">Sound Familiar?</h2>
-            <p className="text-[#8b9cc8] mb-8">
-              These are the challenges we hear from businesses every week. We can help with custom
-              solutions designed to address your exact situation.
+          <div className="card rounded-2xl p-8 md:p-10">
+            <h2 className="text-2xl font-bold text-[#3B3B3B] mb-2">Sound Familiar?</h2>
+            <p className="text-[#6b7280] mb-8">
+              These are the challenges we hear from business owners every week. If any of these ring a bell,
+              we have a solution designed for exactly that situation.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {problemsWesolve.map((problem) => (
+              {problemsWeSolve.map((problem) => (
                 <div
                   key={problem}
-                  className="flex items-center gap-3 p-3 rounded-xl bg-white/3 border border-white/5"
+                  className="flex items-center gap-3 p-3 rounded-xl bg-[#f8fffe] border border-[#D9FFFD]"
                 >
                   <div className="w-2 h-2 rounded-full bg-[#009991] shrink-0" />
-                  <span className="text-[#8b9cc8] text-sm">{problem}</span>
+                  <span className="text-[#6b7280] text-sm">{problem}</span>
                 </div>
               ))}
             </div>
@@ -74,20 +70,20 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-[#0a0f1e]">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase bg-[#009991]/15 text-[#00b8af] border border-[#009991]/30 mb-4">
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D9FFFD] text-[#009991] text-xs font-bold tracking-widest uppercase border border-[#009991]/20 mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-[#009991] animate-pulse" />
               8 Core Services
             </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-[#f0f4ff] mb-4">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[#3B3B3B] mb-4">
               Click Any Service to{" "}
               <span className="gradient-text">See the Details</span>
             </h2>
-            <p className="text-[#8b9cc8] max-w-2xl mx-auto">
-              Every service is fully customized — no off-the-shelf templates. Expand any card
-              to see exactly what&apos;s included and how it can apply to your business.
+            <p className="text-[#6b7280] max-w-2xl mx-auto">
+              Every service is fully customized to your business. Expand any card to see exactly
+              what is included and how it could apply to your situation.
             </p>
           </div>
           <ServiceCardsGrid />
