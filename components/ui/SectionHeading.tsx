@@ -31,9 +31,9 @@ export default function SectionHeading({
             "inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase",
             light
               ? "bg-white/20 text-white border border-white/30"
-              : "bg-[#D9FFFD] text-[#009991] border border-[#009991]/20"
+              : "bg-[#ede9fe] text-[#7c3aed] border border-[#7c3aed]/20"
           )}>
-            <span className={cn("w-1.5 h-1.5 rounded-full animate-pulse", light ? "bg-white" : "bg-[#009991]")} />
+            <span className={cn("w-1.5 h-1.5 rounded-full animate-pulse", light ? "bg-white" : "bg-[#7c3aed]")} />
             {badge}
           </span>
         </div>
@@ -44,7 +44,7 @@ export default function SectionHeading({
       )}>
         {title}{" "}
         {titleHighlight && (
-          <span className={light ? "text-[#D9FFFD]" : "gradient-text"}>{titleHighlight}</span>
+          <span className={light ? "text-[#ede9fe]" : "gradient-text"}>{titleHighlight}</span>
         )}
       </h2>
       {subtitle && (

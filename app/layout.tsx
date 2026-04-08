@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import AppChrome from "@/components/layout/AppChrome";
+import IntroAnimation from "@/components/ui/IntroAnimation";
+import ConsultationModal from "@/components/common/ConsultationModal";
+import { ConsultationModalProvider } from "@/lib/context/ConsultationModalContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -19,47 +21,35 @@ export const metadata: Metadata = {
   description:
     "Modern AI Solutions LLC delivers custom AI-powered software, chatbots, RAG systems, CRM, POS, and workflow automation for businesses in Southeast Missouri and beyond.",
   keywords: [
-    "AI solutions",
-    "custom software",
-    "chatbots",
-    "RAG systems",
-    "CRM",
-    "POS systems",
-    "workflow automation",
-    "Southeast Missouri",
-    "Jackson Missouri",
+    "AI solutions", "custom software", "chatbots", "RAG systems", "CRM",
+    "POS systems", "workflow automation", "Southeast Missouri", "Jackson Missouri",
   ],
   authors: [{ name: "Modern AI Solutions LLC" }],
   creator: "Modern AI Solutions LLC",
   openGraph: {
-    type: "website",
-    locale: "en_US",
+    type: "website", locale: "en_US",
     url: "https://modernaisolutions.com",
     siteName: "Modern AI Solutions",
     title: "Modern AI Solutions — Your Strategic AI Partner",
-    description:
-      "Custom AI-powered software and consulting for forward-thinking businesses.",
+    description: "Custom AI-powered software and consulting for forward-thinking businesses.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Modern AI Solutions — Your Strategic AI Partner",
-    description:
-      "Custom AI-powered software and consulting for forward-thinking businesses.",
+    description: "Custom AI-powered software and consulting for forward-thinking businesses.",
   },
   robots: { index: true, follow: true },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={inter.variable}>
       <body className="min-h-screen antialiased flex flex-col">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <ConsultationModalProvider>
+          <IntroAnimation />
+          <ConsultationModal />
+          <AppChrome>{children}</AppChrome>
+        </ConsultationModalProvider>
       </body>
     </html>
   );

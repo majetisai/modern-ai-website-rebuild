@@ -18,13 +18,13 @@ interface ButtonProps {
 
 const variants = {
   primary:
-    "bg-[#009991] text-white hover:bg-[#007a73] shadow-[0_4px_16px_rgba(0,153,145,0.25)] hover:shadow-[0_6px_24px_rgba(0,153,145,0.35)]",
+    "bg-[#7c3aed] text-white hover:bg-[#6d28d9] shadow-[0_4px_16px_rgba(124,58,237,0.25)] hover:shadow-[0_6px_24px_rgba(124,58,237,0.35)]",
   outline:
-    "border-2 border-[#009991] text-[#009991] hover:bg-[#009991] hover:text-white",
+    "border-2 border-[#7c3aed] text-[#7c3aed] hover:bg-[#7c3aed] hover:text-white",
   ghost:
-    "text-[#3B3B3B] hover:text-[#009991] hover:bg-[#f0fffe]",
+    "text-[#3B3B3B] hover:text-[#7c3aed] hover:bg-[#f5f3ff]",
   white:
-    "bg-white text-[#009991] hover:bg-[#f0fffe] shadow-md font-semibold",
+    "bg-white text-[#7c3aed] hover:bg-[#f5f3ff] shadow-md font-semibold",
 };
 
 const sizes = {

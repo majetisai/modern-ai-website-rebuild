@@ -19,7 +19,7 @@ export default function GlassCard({
     variant === "default" && "card",
     variant === "hover" && "card cursor-pointer",
     variant === "teal" && "card-teal",
-    variant === "featured" && "bg-[#009991] text-white rounded-2xl p-6 shadow-[0_8px_30px_rgba(0,153,145,0.3)]",
+    variant === "featured" && "bg-[#7c3aed] text-white rounded-2xl p-6 shadow-[0_8px_30px_rgba(124,58,237,0.3)]",
     onClick && "cursor-pointer",
     className
   );

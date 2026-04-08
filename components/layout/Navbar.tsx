@@ -8,11 +8,13 @@ import { Menu, X, Phone } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
 import { NAV_LINKS, PHONE, PHONE_HREF } from "@/lib/utils/constants";
 import Logo from "@/components/ui/Logo";
+import { useConsultationModal } from "@/lib/context/ConsultationModalContext";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const pathname = usePathname();
+  const { open } = useConsultationModal();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -39,7 +41,9 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
-            <Logo size="md" />
+            <div className="flex-shrink-0">
+              <Logo size="md" />
+            </div>
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-1">
@@ -50,8 +54,8 @@ export default function Navbar() {
                   className={cn(
                     "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200",
                     pathname === link.href
-                      ? "text-[#009991] bg-[#D9FFFD]"
-                      : "text-[#3B3B3B] hover:text-[#009991] hover:bg-[#f0fffe]"
+                      ? "text-[#7c3aed] bg-[#ede9fe]"
+                      : "text-[#3B3B3B] hover:text-[#7c3aed] hover:bg-[#f5f3ff]"
                   )}
                 >
                   {link.label}
@@ -63,17 +67,17 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-4">
               <a
                 href={PHONE_HREF}
-                className="flex items-center gap-1.5 text-sm text-[#6b7280] hover:text-[#009991] transition-colors font-medium"
+                className="flex items-center gap-1.5 text-sm text-[#6b7280] hover:text-[#7c3aed] transition-colors font-medium"
               >
                 <Phone className="w-3.5 h-3.5" />
                 {PHONE}
               </a>
-              <Link
-                href="/consulting"
+              <button
+                onClick={open}
                 className="btn-teal text-sm px-5 py-2.5 rounded-lg"
               >
                 Free Consultation
-              </Link>
+              </button>
             </div>
 
             {/* Mobile Toggle */}
@@ -111,8 +115,8 @@ export default function Navbar() {
                     className={cn(
                       "block px-4 py-3 rounded-xl text-base font-medium transition-all",
                       pathname === link.href
-                        ? "text-[#009991] bg-[#D9FFFD]"
-                        : "text-[#3B3B3B] hover:text-[#009991] hover:bg-[#f0fffe]"
+                        ? "text-[#7c3aed] bg-[#ede9fe]"
+                        : "text-[#3B3B3B] hover:text-[#7c3aed] hover:bg-[#f5f3ff]"
                     )}
                   >
                     {link.label}
@@ -128,12 +132,12 @@ export default function Navbar() {
                 <a href={PHONE_HREF} className="text-center text-[#6b7280] font-medium flex items-center justify-center gap-2">
                   <Phone className="w-4 h-4" /> {PHONE}
                 </a>
-                <Link
-                  href="/consulting"
+                <button
+                  onClick={() => { setIsMobileOpen(false); open(); }}
                   className="btn-teal justify-center text-center rounded-xl py-3"
                 >
                   Schedule Free Consultation
-                </Link>
+                </button>
               </motion.div>
             </nav>
           </motion.div>

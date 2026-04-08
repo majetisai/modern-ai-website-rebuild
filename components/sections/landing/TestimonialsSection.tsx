@@ -28,13 +28,13 @@ export default function TestimonialsSection() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.4 }}
-            className="bg-[#f8fffe] rounded-3xl p-8 md:p-12 text-center border border-[#D9FFFD]"
+            className="bg-[#faf8ff] rounded-2xl p-6 sm:p-8 md:p-12 text-center border border-[#ede9fe]"
           >
-            <Quote className="w-10 h-10 text-[#009991]/30 mx-auto mb-6" />
+            <Quote className="w-10 h-10 text-[#7c3aed]/30 mx-auto mb-6" />
 
             <div className="flex justify-center gap-1 mb-6">
               {Array.from({ length: testimonials[current].rating }).map((_, i) => (
-                <Star key={i} className="w-5 h-5 fill-[#009991] text-[#009991]" />
+                <Star key={i} className="w-5 h-5 fill-[#7c3aed] text-[#7c3aed]" />
               ))}
             </div>
 
@@ -44,7 +44,7 @@ export default function TestimonialsSection() {
 
             <div>
               <div className="text-[#3B3B3B] font-bold">{testimonials[current].name}</div>
-              <div className="text-[#009991] text-sm font-medium">
+              <div className="text-[#7c3aed] text-sm font-medium">
                 {testimonials[current].title}, {testimonials[current].company}
               </div>
             </div>
@@ -53,7 +53,7 @@ export default function TestimonialsSection() {
           <div className="flex items-center justify-center gap-4 mt-8">
             <button
               onClick={prev}
-              className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#6b7280] hover:text-[#009991] hover:border-[#009991] transition-all"
+              className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#6b7280] hover:text-[#7c3aed] hover:border-[#7c3aed] transition-all"
               aria-label="Previous"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -63,14 +63,14 @@ export default function TestimonialsSection() {
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
-                  className={`h-2 rounded-full transition-all duration-300 ${i === current ? "w-6 bg-[#009991]" : "w-2 bg-gray-200 hover:bg-gray-300"}`}
+                  className={`h-2 rounded-full transition-all duration-300 ${i === current ? "w-6 bg-[#7c3aed]" : "w-2 bg-gray-200 hover:bg-gray-300"}`}
                   aria-label={`Testimonial ${i + 1}`}
                 />
               ))}
             </div>
             <button
               onClick={next}
-              className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#6b7280] hover:text-[#009991] hover:border-[#009991] transition-all"
+              className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-[#6b7280] hover:text-[#7c3aed] hover:border-[#7c3aed] transition-all"
               aria-label="Next"
             >
               <ChevronRight className="w-5 h-5" />

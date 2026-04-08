@@ -3,57 +3,72 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
-  Workflow, Globe, TrendingUp, BrainCircuit,
+  Workflow, TrendingUp, BrainCircuit,
   MessageSquare, BarChart3, Store, Plug, ArrowRight
 } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";
-
-const iconMap: Record<string, React.ElementType> = {
-  Workflow, Globe, TrendingUp, BrainCircuit, MessageSquare, BarChart3, Store, Plug,
-};
+import HologramIcon from "@/components/ui/HologramIcon";
 
 const overviewServices = [
   {
-    icon: "BrainCircuit",
+    Icon: BrainCircuit,
     title: "Smart Document Search",
-    description: "Your team gets instant, accurate answers from your own documents and knowledge base — no more digging through files.",
+    description: "Your team gets instant, accurate answers from your own documents and knowledge base. No more digging through files for hours.",
     href: "/services#rag-systems",
-    color: "bg-purple-50 text-purple-600",
+    color: "#a855f7",
+    glowRgb: "168,85,247",
+    accentColor: "group-hover:border-purple-400/40",
+    accentBg: "group-hover:bg-purple-50/30",
   },
   {
-    icon: "MessageSquare",
+    Icon: MessageSquare,
     title: "AI Chatbots and Assistants",
     description: "Always-on virtual assistants that answer customer questions, qualify leads, and book appointments around the clock.",
     href: "/services#chatbots",
-    color: "bg-cyan-50 text-cyan-600",
+    color: "#06b6d4",
+    glowRgb: "6,182,212",
+    accentColor: "group-hover:border-cyan-400/40",
+    accentBg: "group-hover:bg-cyan-50/30",
   },
   {
-    icon: "Workflow",
+    Icon: Workflow,
     title: "Workflow Automation",
-    description: "We eliminate the manual, repetitive tasks that drain your team's time and energy so they can focus on what matters.",
+    description: "We eliminate the manual, repetitive tasks that drain your team's time and energy so they can focus on what actually matters.",
     href: "/services#automated-workflows",
-    color: "bg-orange-50 text-orange-600",
+    color: "#f97316",
+    glowRgb: "249,115,22",
+    accentColor: "group-hover:border-orange-400/40",
+    accentBg: "group-hover:bg-orange-50/30",
   },
   {
-    icon: "Store",
+    Icon: Store,
     title: "Custom POS and CRM Systems",
     description: "Purpose-built point-of-sale and customer management systems designed around exactly how you do business.",
     href: "/services#pos-crm",
-    color: "bg-yellow-50 text-yellow-600",
+    color: "#eab308",
+    glowRgb: "234,179,8",
+    accentColor: "group-hover:border-yellow-400/40",
+    accentBg: "group-hover:bg-yellow-50/30",
   },
   {
-    icon: "TrendingUp",
+    Icon: TrendingUp,
     title: "Sales and Marketing Automation",
-    description: "Capture leads, send follow-ups, and nurture prospects automatically so you never let a potential customer slip away.",
+    description: "Capture leads, send follow-ups, and nurture prospects automatically so you never let a potential customer slip through.",
     href: "/services#sales-marketing",
-    color: "bg-green-50 text-green-600",
+    color: "#22c55e",
+    glowRgb: "34,197,94",
+    accentColor: "group-hover:border-green-400/40",
+    accentBg: "group-hover:bg-green-50/30",
   },
   {
-    icon: "Plug",
+    Icon: Plug,
     title: "System Integrations",
     description: "We connect all your existing tools so your data flows seamlessly and your team stops copying information between systems.",
     href: "/services#integrations",
-    color: "bg-red-50 text-red-600",
+    color: "#f43f5e",
+    glowRgb: "244,63,94",
+    accentColor: "group-hover:border-rose-400/40",
+    accentBg: "group-hover:bg-rose-50/30",
   },
 ];
 
@@ -65,43 +80,38 @@ export default function ServicesOverviewSection() {
           badge="What We Build"
           title="AI Solutions That Solve"
           titleHighlight="Real Business Problems"
-          subtitle="From intelligent assistants to fully custom systems, everything we build is designed to address the specific challenges your business faces every day."
+          subtitle="From intelligent assistants to fully custom systems, everything we build is designed to address the specific challenges your business faces every single day."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {overviewServices.map((service, i) => {
-            const Icon = iconMap[service.icon] || BrainCircuit;
-            return (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: i * 0.07 }}
-              >
-                <Link href={service.href} className="block h-full">
-                  <div className="card p-6 h-full flex flex-col gap-4 group">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${service.color}`}>
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-[#3B3B3B] font-bold text-lg mb-2 group-hover:text-[#009991] transition-colors">
-                        {service.title}
-                      </h3>
-                      <p className="text-[#6b7280] text-sm leading-relaxed">{service.description}</p>
-                    </div>
-                    <div className="flex items-center gap-1 text-[#009991] text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-300">
-                      Learn more <ArrowRight className="w-4 h-4" />
-                    </div>
+          {overviewServices.map((service, i) => (
+            <motion.div
+              key={service.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: i * 0.07 }}
+            >
+              <Link href={service.href} className="block h-full group">
+                <div className={`relative h-full flex flex-col gap-4 p-6 rounded-2xl border-2 border-transparent ${service.accentColor} ${service.accentBg} bg-white transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1`}>
+                  <HologramIcon Icon={service.Icon} color={service.color} glowRgb={service.glowRgb} size="md" offset={i * 0.3} />
+                  <div className="flex-1">
+                    <h3 className="text-[#3B3B3B] font-bold text-lg mb-2 group-hover:text-[#7c3aed] transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-[#6b7280] text-sm leading-relaxed">{service.description}</p>
                   </div>
-                </Link>
-              </motion.div>
-            );
-          })}
+                  <div className="flex items-center gap-1 text-[#7c3aed] text-sm font-semibold">
+                    Learn more <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
         </div>
 
         <div className="text-center">
-          <Link href="/services" className="inline-flex items-center gap-2 text-[#009991] font-semibold hover:text-[#007a73] transition-colors">
+          <Link href="/services" className="inline-flex items-center gap-2 bg-[#faf8ff] border border-[#7c3aed]/30 text-[#7c3aed] font-semibold px-6 py-3 rounded-xl hover:bg-[#ede9fe] transition-colors">
             Explore all 8 services we offer <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

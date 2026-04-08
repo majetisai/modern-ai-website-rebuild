@@ -44,8 +44,8 @@ export default function ConsultationForm() {
         animate={{ opacity: 1, scale: 1 }}
         className="text-center py-12"
       >
-        <div className="w-20 h-20 rounded-full bg-[#D9FFFD] border-2 border-[#009991] flex items-center justify-center mx-auto mb-6">
-          <CheckCircle className="w-10 h-10 text-[#009991]" />
+        <div className="w-20 h-20 rounded-full bg-[#ede9fe] border-2 border-[#7c3aed] flex items-center justify-center mx-auto mb-6">
+          <CheckCircle className="w-10 h-10 text-[#7c3aed]" />
         </div>
         <h3 className="text-2xl font-extrabold text-[#3B3B3B] mb-3">You are all set!</h3>
         <p className="text-[#6b7280] max-w-sm mx-auto">
@@ -188,13 +188,13 @@ export default function ConsultationForm() {
       </div>
 
       {/* Newsletter */}
-      <div className="flex items-start gap-3 p-4 rounded-xl bg-[#f8fffe] border border-[#D9FFFD]">
+      <div className="flex items-start gap-3 p-4 rounded-xl bg-[#faf8ff] border border-[#ede9fe]">
         <input
           type="checkbox"
           id="newsletter"
           checked={form.newsletter}
           onChange={(e) => update("newsletter", e.target.checked)}
-          className="mt-0.5 w-4 h-4 rounded accent-[#009991] cursor-pointer"
+          className="mt-0.5 w-4 h-4 rounded accent-[#7c3aed] cursor-pointer"
         />
         <label htmlFor="newsletter" className="text-sm text-[#6b7280] cursor-pointer leading-relaxed">
           <span className="font-medium text-[#3B3B3B]">Optional:</span> Yes, keep me in the loop! I want to receive exclusive insights, the latest AI trends, and special offers from Modern AI Solutions by email. Unsubscribe anytime.

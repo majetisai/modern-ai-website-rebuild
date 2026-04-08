@@ -9,7 +9,7 @@ import CtaSection from "@/components/sections/landing/CtaSection";
 export const metadata: Metadata = {
   title: "Modern AI Solutions — Your Strategic AI Partner",
   description:
-    "Custom AI-powered software, chatbots, RAG systems, CRM, POS, and workflow automation for Southeast Missouri businesses. Powered by Claude AI.",
+    "Custom AI-powered software, chatbots, RAG systems, CRM, POS, and workflow automation for Southeast Missouri businesses.",
 };
 
 export default function HomePage() {

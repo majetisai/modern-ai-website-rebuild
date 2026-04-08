@@ -35,7 +35,7 @@ function ApplicationModal({ job, onClose }: { job: Job; onClose: () => void }) {
         <div className="flex items-start justify-between mb-6">
           <div>
             <h3 className="text-[#3B3B3B] font-bold text-xl">{job.title}</h3>
-            <p className="text-[#009991] text-sm">{job.department} · {job.location}</p>
+            <p className="text-[#7c3aed] text-sm">{job.department} · {job.location}</p>
           </div>
           <button onClick={onClose} className="text-[#6b7280] hover:text-[#3B3B3B] transition-colors p-1">
             <X className="w-5 h-5" />
@@ -44,8 +44,8 @@ function ApplicationModal({ job, onClose }: { job: Job; onClose: () => void }) {
 
         {submitted ? (
           <div className="text-center py-8">
-            <div className="w-16 h-16 rounded-full bg-[#D9FFFD] border-2 border-[#009991] flex items-center justify-center mx-auto mb-4">
-              <Send className="w-8 h-8 text-[#009991]" />
+            <div className="w-16 h-16 rounded-full bg-[#ede9fe] border-2 border-[#7c3aed] flex items-center justify-center mx-auto mb-4">
+              <Send className="w-8 h-8 text-[#7c3aed]" />
             </div>
             <h4 className="text-[#3B3B3B] font-bold text-lg mb-2">Application Submitted!</h4>
             <p className="text-[#6b7280] text-sm">
@@ -126,7 +126,7 @@ export default function JobListings() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.06 }}
               className={`card rounded-2xl overflow-hidden transition-all duration-300 ${
-                isExpanded ? "border-[#009991]/40" : ""
+                isExpanded ? "border-[#7c3aed]/40" : ""
               }`}
             >
               <button
@@ -138,23 +138,23 @@ export default function JobListings() {
                     <h3 className="text-[#3B3B3B] font-bold text-xl mb-1">{job.title}</h3>
                     <div className="flex flex-wrap items-center gap-3 text-sm text-[#6b7280]">
                       <span className="flex items-center gap-1">
-                        <MapPin className="w-3.5 h-3.5 text-[#009991]" />
+                        <MapPin className="w-3.5 h-3.5 text-[#7c3aed]" />
                         {job.location}
                       </span>
                       <span className="flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5 text-[#009991]" />
+                        <Clock className="w-3.5 h-3.5 text-[#7c3aed]" />
                         {job.type}
                       </span>
                       {job.salary && (
                         <span className="flex items-center gap-1">
-                          <DollarSign className="w-3.5 h-3.5 text-[#009991]" />
+                          <DollarSign className="w-3.5 h-3.5 text-[#7c3aed]" />
                           {job.salary}
                         </span>
                       )}
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#D9FFFD] text-[#009991] border border-[#009991]/20">
+                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#ede9fe] text-[#7c3aed] border border-[#7c3aed]/20">
                       {job.department}
                     </span>
                     <motion.div animate={{ rotate: isExpanded ? 180 : 0 }}>
@@ -181,7 +181,7 @@ export default function JobListings() {
                           <ul className="space-y-2">
                             {job.requirements.map((r) => (
                               <li key={r} className="flex items-start gap-2 text-[#6b7280] text-sm">
-                                <div className="w-1.5 h-1.5 rounded-full bg-[#009991] mt-2 shrink-0" />
+                                <div className="w-1.5 h-1.5 rounded-full bg-[#7c3aed] mt-2 shrink-0" />
                                 {r}
                               </li>
                             ))}
@@ -201,7 +201,7 @@ export default function JobListings() {
                       </div>
                       <button
                         onClick={() => setApplyingJob(job)}
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#009991] text-white font-semibold hover:bg-[#007a73] transition-colors"
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#7c3aed] text-white font-semibold hover:bg-[#6d28d9] transition-colors"
                       >
                         Apply Now <Send className="w-4 h-4" />
                       </button>

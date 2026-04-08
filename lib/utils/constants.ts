@@ -2,7 +2,7 @@
 export const COMPANY_NAME = "Modern AI Solutions";
 export const COMPANY_FULL_NAME = "Modern AI Solutions LLC";
 export const TAGLINE = "Your Strategic AI Partner";
-export const BRAND_COLOR = "#009991";
+export const BRAND_COLOR = "#7c3aed";
 
 // Contact
 export const PHONE = "573-200-6241";

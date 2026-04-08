@@ -3,26 +3,26 @@
 /* ============================================================
    MODERN AI SOLUTIONS — DESIGN SYSTEM
    Brand Guide Colors — Last Updated 6/1/2025
-   Primary:   #009991  (ModernAI Teal)
-   Light:     #D9FFFD  (ModernAI Teal Light)
-   Dark:      #00504C  (ModernAI Teal Dark)
+   Primary:   #7c3aed  (ModernAI Teal)
+   Light:     #ede9fe  (ModernAI Teal Light)
+   Dark:      #5b21b6  (ModernAI Teal Dark)
    Graphite:  #3B3B3B  (Primary Text)
    Gray:      #D5D5D5  (Light Borders/Dividers)
    ============================================================ */
 
 @theme inline {
   /* Brand Teal */
-  --color-teal:        #009991;
-  --color-teal-light:  #D9FFFD;
-  --color-teal-dark:   #00504C;
-  --color-teal-mid:    #007a73;
-  --color-teal-hover:  #00b8af;
+  --color-teal:        #7c3aed;
+  --color-teal-light:  #ede9fe;
+  --color-teal-dark:   #5b21b6;
+  --color-teal-mid:    #6d28d9;
+  --color-teal-hover:  #8b5cf6;
 
   /* Backgrounds */
   --color-bg:          #ffffff;
-  --color-bg-soft:     #f8fffe;
+  --color-bg-soft:     #faf8ff;
   --color-bg-section:  #f4f4f4;
-  --color-bg-teal:     #e8fffe;
+  --color-bg-purple:     #f3f0ff;
 
   /* Text */
   --color-text:        #3B3B3B;
@@ -31,7 +31,7 @@
 
   /* Borders */
   --color-border:      #e5e7eb;
-  --color-border-teal: rgba(0, 153, 145, 0.25);
+  --color-border-teal: rgba(124, 58, 237, 0.25);
 
   /* Font */
   --font-sans: var(--font-inter);
@@ -44,6 +44,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 body {
@@ -51,14 +52,40 @@ body {
   color: #3B3B3B;
   font-family: var(--font-sans), 'Open Sans', system-ui, sans-serif;
   line-height: 1.7;
+  overflow-x: hidden;
+  min-width: 320px;
 }
 
-/* Teal Gradient Text */
+/* Brand Gradient Text — purple → indigo → blue */
 .gradient-text {
-  background: linear-gradient(135deg, #009991, #00b8af);
+  background: linear-gradient(135deg, #a855f7 0%, #6366f1 50%, #3b82f6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Hologram elements */
+@keyframes hologram-spin {
+  from { transform: rotateY(0deg) rotateX(15deg); }
+  to   { transform: rotateY(360deg) rotateX(15deg); }
+}
+@keyframes hologram-pulse {
+  0%, 100% { opacity: 0.6; box-shadow: 0 0 20px rgba(124,58,237,0.4), 0 0 60px rgba(59,130,246,0.2); }
+  50%       { opacity: 0.9; box-shadow: 0 0 40px rgba(124,58,237,0.7), 0 0 100px rgba(124,58,237,0.3); }
+}
+@keyframes hologram-flicker {
+  0%, 100% { opacity: 1; }
+  92%       { opacity: 1; }
+  93%       { opacity: 0.4; }
+  94%       { opacity: 1; }
+  96%       { opacity: 0.6; }
+  97%       { opacity: 1; }
+}
+.hologram-ring {
+  animation: hologram-spin 8s linear infinite, hologram-pulse 3s ease-in-out infinite;
+}
+.hologram-glow {
+  animation: hologram-pulse 3s ease-in-out infinite, hologram-flicker 7s ease-in-out infinite;
 }
 
 /* Card Styles */
@@ -71,41 +98,41 @@ body {
 }
 
 .card:hover {
-  border-color: rgba(0, 153, 145, 0.35);
-  box-shadow: 0 8px 30px rgba(0, 153, 145, 0.12);
+  border-color: rgba(124, 58, 237, 0.35);
+  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.12);
   transform: translateY(-2px);
 }
 
 .card-teal {
-  background: linear-gradient(135deg, #f0fffe, #e0fffc);
-  border: 1px solid rgba(0, 153, 145, 0.2);
+  background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+  border: 1px solid rgba(124, 58, 237, 0.2);
   border-radius: 1rem;
 }
 
 /* Section helpers */
 .section-white  { background-color: #ffffff; }
-.section-soft   { background-color: #f8fffe; }
+.section-soft   { background-color: #faf8ff; }
 .section-gray   { background-color: #f4f4f4; }
-.section-teal   { background: linear-gradient(135deg, #009991, #00504C); }
-.section-teal-light { background: linear-gradient(135deg, #e8fffe, #f0fffe); }
+.section-teal   { background: linear-gradient(135deg, #7c3aed, #5b21b6); }
+.section-teal-light { background: linear-gradient(135deg, #f3f0ff, #f5f3ff); }
 
 /* Teal button */
 .btn-teal {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: #009991;
+  background-color: #7c3aed;
   color: #ffffff;
   font-weight: 600;
   padding: 0.75rem 1.75rem;
   border-radius: 0.75rem;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 16px rgba(0, 153, 145, 0.25);
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.25);
 }
 
 .btn-teal:hover {
-  background-color: #007a73;
-  box-shadow: 0 6px 24px rgba(0, 153, 145, 0.35);
+  background-color: #6d28d9;
+  box-shadow: 0 6px 24px rgba(124, 58, 237, 0.35);
   transform: translateY(-1px);
 }
 
@@ -113,8 +140,8 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  border: 2px solid #009991;
-  color: #009991;
+  border: 2px solid #7c3aed;
+  color: #7c3aed;
   font-weight: 600;
   padding: 0.75rem 1.75rem;
   border-radius: 0.75rem;
@@ -122,20 +149,67 @@ body {
 }
 
 .btn-outline:hover {
-  background-color: #009991;
+  background-color: #7c3aed;
   color: #ffffff;
 }
+
+/* ── Animated blob backgrounds ─────────────────────────────── */
+/* NOTE: blobs use ONLY purple / blue / orange — never brand teal */
+@keyframes blob-float {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  25%       { transform: translate(30px, -35px) scale(1.08) rotate(5deg); }
+  50%       { transform: translate(-20px, 25px) scale(0.94) rotate(-3deg); }
+  75%       { transform: translate(15px, -10px) scale(1.04) rotate(2deg); }
+}
+@keyframes blob-float-b {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  33%       { transform: translate(-35px, 20px) scale(1.1) rotate(-6deg); }
+  66%       { transform: translate(25px, -25px) scale(0.92) rotate(4deg); }
+}
+@keyframes blob-float-c {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%       { transform: translate(20px, 30px) scale(1.07); }
+  80%       { transform: translate(-25px, -15px) scale(0.95); }
+}
+
+.blob-a { animation: blob-float   9s ease-in-out infinite; }
+.blob-b { animation: blob-float-b 12s ease-in-out infinite 1.5s; }
+.blob-c { animation: blob-float-c 10s ease-in-out infinite 3s; }
+
+/* Dark Form (inside ConsultationModal) */
+.dark-form label { color: #d1d5db !important; }
+.dark-form .text-\[\#3B3B3B\] { color: #d1d5db !important; }
+.dark-form .input-field {
+  background: #1a1a1a !important;
+  border-color: rgba(255,255,255,0.12) !important;
+  color: #f0f0f0 !important;
+}
+.dark-form .input-field:focus {
+  border-color: #7c3aed !important;
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.15) !important;
+}
+.dark-form .input-field::placeholder { color: #6b7280 !important; }
+.dark-form select.input-field option { background: #1a1a1a; color: #f0f0f0; }
+.dark-form .bg-\[\#faf8ff\] {
+  background: rgba(124,58,237,0.08) !important;
+  border-color: rgba(124,58,237,0.2) !important;
+}
+.dark-form .text-\[\#6b7280\] { color: #9ca3af !important; }
+.dark-form .text-\[\#9ca3af\] { color: #6b7280 !important; }
+.dark-form .bg-gray-50 { background: #222 !important; }
+.dark-form .border-\[\#D5D5D5\] { border-color: rgba(255,255,255,0.12) !important; }
+.dark-form .text-\[\#3B3B3B\] { color: #d1d5db !important; }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #f4f4f4; }
-::-webkit-scrollbar-thumb { background: rgba(0,153,145,0.4); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: rgba(124,58,237,0.4); border-radius: 3px; }
 
 /* Selection */
-::selection { background: rgba(0,153,145,0.15); color: #3B3B3B; }
+::selection { background: rgba(124,58,237,0.15); color: #3B3B3B; }
 
 /* Focus */
-:focus-visible { outline: 2px solid #009991; outline-offset: 2px; }
+:focus-visible { outline: 2px solid #7c3aed; outline-offset: 2px; }
 
 /* Input base */
 .input-field {
@@ -151,8 +225,8 @@ body {
 
 .input-field:focus {
   outline: none;
-  border-color: #009991;
-  box-shadow: 0 0 0 3px rgba(0,153,145,0.1);
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
 }
 
 .input-field::placeholder { color: #9ca3af; }

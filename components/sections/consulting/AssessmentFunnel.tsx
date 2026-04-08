@@ -26,7 +26,7 @@ const questions = [
     question: "How many people work in your business?",
     subtitle: "This helps us understand the scale of solution that makes sense for you.",
     options: [
-      { label: "Just me — I run the show solo", value: "solo" },
+      { label: "Just me. I run the show solo.", value: "solo" },
       { label: "2 to 10 people", value: "small" },
       { label: "11 to 50 people", value: "medium" },
       { label: "More than 50 people", value: "large" },
@@ -46,9 +46,9 @@ const questions = [
   {
     id: "current_tools",
     question: "How would you describe your current tech setup?",
-    subtitle: "No wrong answers here — just helps us understand your starting point.",
+    subtitle: "No wrong answers here. This just helps us understand your starting point.",
     options: [
-      { label: "Mostly spreadsheets and email — keeping it simple", value: "basic" },
+      { label: "Mostly spreadsheets and email, keeping it simple", value: "basic" },
       { label: "A few dedicated tools but nothing connected", value: "some_tools" },
       { label: "Several systems that do not really talk to each other", value: "disconnected" },
       { label: "Solid setup, I just want AI layered on top of what I have", value: "advanced" },
@@ -57,7 +57,7 @@ const questions = [
   {
     id: "timeline",
     question: "When are you looking to get started?",
-    subtitle: "There is no pressure — this just helps us prioritize our team's availability.",
+    subtitle: "There is no pressure here. This just helps us prioritize our team's availability.",
     options: [
       { label: "As soon as possible, I need this now", value: "asap" },
       { label: "Ideally within the next 30 days", value: "month" },
@@ -94,12 +94,12 @@ function getResults(answers: Record<string, string>): Results {
   const urgencyMap: Record<string, string> = {
     asap: "Our team can typically start an initial assessment within 2 to 3 business days. Fill out the form below and we will reach out today.",
     month: "We can schedule your discovery call this week so you are well within your 30-day window.",
-    quarter: "We have availability to begin planning this month. No rush — we will make sure the timing works for you.",
+    quarter: "We have availability to begin planning this month. No rush at all. We will make sure the timing works perfectly for you.",
     researching: "Take all the time you need. Our free consultation has zero obligations and zero pressure.",
   };
 
   return {
-    headline: "Good news — we can definitely help.",
+    headline: "Good news. We can definitely help.",
     description: "Based on what you shared, here are the solutions most likely to make an immediate difference for your business:",
     recommendations: [...new Set(recs)].slice(0, 3),
     urgency: urgencyMap[timeline] || urgencyMap.researching,
@@ -146,8 +146,8 @@ export default function AssessmentFunnel() {
   if (submitted) {
     return (
       <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-16">
-        <div className="w-20 h-20 rounded-full bg-[#D9FFFD] border-2 border-[#009991] flex items-center justify-center mx-auto mb-6">
-          <CheckCircle className="w-10 h-10 text-[#009991]" />
+        <div className="w-20 h-20 rounded-full bg-[#ede9fe] border-2 border-[#7c3aed] flex items-center justify-center mx-auto mb-6">
+          <CheckCircle className="w-10 h-10 text-[#7c3aed]" />
         </div>
         <h3 className="text-3xl font-extrabold text-[#3B3B3B] mb-4">We will be in touch soon!</h3>
         <p className="text-[#6b7280] max-w-md mx-auto">
@@ -168,7 +168,7 @@ export default function AssessmentFunnel() {
           </div>
           <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
             <motion.div
-              className="h-full bg-[#009991] rounded-full"
+              className="h-full bg-[#7c3aed] rounded-full"
               animate={{ width: `${progress}%` }}
               transition={{ duration: 0.4 }}
             />
@@ -182,19 +182,19 @@ export default function AssessmentFunnel() {
           <motion.div key="intro" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
             className="bg-white rounded-3xl border border-gray-100 shadow-lg p-8 md:p-10 text-center"
           >
-            <div className="w-16 h-16 rounded-2xl bg-[#D9FFFD] flex items-center justify-center mx-auto mb-6">
-              <svg viewBox="0 0 24 24" className="w-8 h-8 text-[#009991]" fill="none" stroke="currentColor" strokeWidth={2}>
+            <div className="w-16 h-16 rounded-2xl bg-[#ede9fe] flex items-center justify-center mx-auto mb-6">
+              <svg viewBox="0 0 24 24" className="w-8 h-8 text-[#7c3aed]" fill="none" stroke="currentColor" strokeWidth={2}>
                 <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
             </div>
             <h3 className="text-2xl md:text-3xl font-extrabold text-[#3B3B3B] mb-4">AI Readiness Assessment</h3>
             <p className="text-[#6b7280] leading-relaxed mb-8 max-w-lg mx-auto">
-              Answer 5 quick questions and we will identify the AI solutions most likely to deliver real value for your specific business — completely free, no strings attached.
+              Answer 5 quick questions and we will identify the AI solutions most likely to deliver real value for your specific business. Completely free with absolutely no strings attached.
             </p>
             <ul className="text-left space-y-3 mb-8 max-w-sm mx-auto">
               {["Takes less than 2 minutes", "Personalized recommendations for your business", "Free with absolutely no obligation"].map((item) => (
                 <li key={item} className="flex items-center gap-3 text-[#6b7280] text-sm">
-                  <CheckCircle className="w-4 h-4 text-[#009991] shrink-0" />
+                  <CheckCircle className="w-4 h-4 text-[#7c3aed] shrink-0" />
                   {item}
                 </li>
               ))}
@@ -220,13 +220,13 @@ export default function AssessmentFunnel() {
                   onClick={() => setSelected(option.value)}
                   className={`w-full text-left px-5 py-4 rounded-xl border-2 transition-all duration-200 text-sm ${
                     selected === option.value
-                      ? "border-[#009991] bg-[#D9FFFD] text-[#3B3B3B] font-medium"
-                      : "border-gray-200 bg-white text-[#6b7280] hover:border-[#009991]/50 hover:text-[#3B3B3B]"
+                      ? "border-[#7c3aed] bg-[#ede9fe] text-[#3B3B3B] font-medium"
+                      : "border-gray-200 bg-white text-[#6b7280] hover:border-[#7c3aed]/50 hover:text-[#3B3B3B]"
                   }`}
                 >
                   <div className="flex items-center gap-3">
                     <div className={`w-4 h-4 rounded-full border-2 shrink-0 transition-colors ${
-                      selected === option.value ? "border-[#009991] bg-[#009991]" : "border-gray-300"
+                      selected === option.value ? "border-[#7c3aed] bg-[#7c3aed]" : "border-gray-300"
                     }`} />
                     {option.label}
                   </div>
@@ -247,7 +247,7 @@ export default function AssessmentFunnel() {
                   Skip this question
                 </button>
                 <button onClick={handleNext} disabled={!selected}
-                  className="flex items-center gap-2 px-6 py-3 rounded-xl bg-[#009991] text-white font-semibold hover:bg-[#007a73] disabled:opacity-40 disabled:cursor-not-allowed transition-all text-sm">
+                  className="flex items-center gap-2 px-6 py-3 rounded-xl bg-[#7c3aed] text-white font-semibold hover:bg-[#6d28d9] disabled:opacity-40 disabled:cursor-not-allowed transition-all text-sm">
                   {step === totalSteps ? "See My Results" : "Next"} <ChevronRight className="w-4 h-4" />
                 </button>
               </div>
@@ -261,15 +261,15 @@ export default function AssessmentFunnel() {
             className="bg-white rounded-3xl border border-gray-100 shadow-lg p-8 md:p-10"
           >
             <div className="flex items-center gap-3 mb-4">
-              <CheckCircle className="w-8 h-8 text-[#009991]" />
+              <CheckCircle className="w-8 h-8 text-[#7c3aed]" />
               <h3 className="text-2xl font-extrabold text-[#3B3B3B]">{results.headline}</h3>
             </div>
             <p className="text-[#6b7280] mb-6">{results.description}</p>
 
             <div className="space-y-3 mb-6">
               {results.recommendations.map((rec, i) => (
-                <div key={rec} className="flex items-center gap-3 p-4 rounded-xl bg-[#f8fffe] border border-[#D9FFFD]">
-                  <span className="w-6 h-6 rounded-full bg-[#009991] flex items-center justify-center text-white text-xs font-bold shrink-0">
+                <div key={rec} className="flex items-center gap-3 p-4 rounded-xl bg-[#faf8ff] border border-[#ede9fe]">
+                  <span className="w-6 h-6 rounded-full bg-[#7c3aed] flex items-center justify-center text-white text-xs font-bold shrink-0">
                     {i + 1}
                   </span>
                   <span className="text-[#3B3B3B] font-medium text-sm">{rec}</span>

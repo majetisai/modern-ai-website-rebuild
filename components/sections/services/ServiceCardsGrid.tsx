@@ -34,7 +34,7 @@ export default function ServiceCardsGrid() {
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: (i % 2) * 0.1 }}
             className={`card rounded-2xl overflow-hidden transition-all duration-300 ${
-              isExpanded ? "border-[#009991]/40 shadow-[0_8px_30px_rgba(0,153,145,0.12)]" : ""
+              isExpanded ? "border-[#7c3aed]/40 shadow-[0_8px_30px_rgba(124,58,237,0.12)]" : ""
             }`}
           >
             {/* Card Header */}
@@ -45,12 +45,12 @@ export default function ServiceCardsGrid() {
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-[#D9FFFD] border border-[#009991]/20">
-                    <Icon className="w-6 h-6 text-[#009991]" />
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 bg-[#ede9fe] border border-[#7c3aed]/20">
+                    <Icon className="w-6 h-6 text-[#7c3aed]" />
                   </div>
                   <div>
                     <h3 className="text-[#3B3B3B] font-bold text-lg leading-snug">{service.title}</h3>
-                    <p className="text-[#009991] text-sm font-medium mt-0.5">{service.tagline}</p>
+                    <p className="text-[#7c3aed] text-sm font-medium mt-0.5">{service.tagline}</p>
                   </div>
                 </div>
                 <motion.div
@@ -86,7 +86,7 @@ export default function ServiceCardsGrid() {
                         <ul className="space-y-2">
                           {service.features.map((f) => (
                             <li key={f} className="flex items-start gap-2 text-sm text-[#6b7280]">
-                              <Check className="w-4 h-4 text-[#009991] mt-0.5 shrink-0" />
+                              <Check className="w-4 h-4 text-[#7c3aed] mt-0.5 shrink-0" />
                               {f}
                             </li>
                           ))}
@@ -101,7 +101,7 @@ export default function ServiceCardsGrid() {
                         <ul className="space-y-2">
                           {service.useCases.map((u) => (
                             <li key={u} className="flex items-start gap-2 text-sm text-[#6b7280]">
-                              <div className="w-1.5 h-1.5 rounded-full bg-[#009991] mt-2 shrink-0" />
+                              <div className="w-1.5 h-1.5 rounded-full bg-[#7c3aed] mt-2 shrink-0" />
                               {u}
                             </li>
                           ))}

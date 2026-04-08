@@ -28,7 +28,7 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-[#00504C] text-white">
+    <footer className="bg-[#5b21b6] text-white">
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
@@ -36,9 +36,9 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="mb-4">
-              <Logo size="md" href="/" className="[&_span]:!text-white [&_.gradient-text]:!text-[#D9FFFD]" />
+              <Logo size="md" href="/" white />
             </div>
-            <p className="text-[#D9FFFD]/80 text-sm leading-relaxed mb-6">
+            <p className="text-[#ede9fe]/80 text-sm leading-relaxed mb-6">
               {TAGLINE}. Helping {REGION} businesses grow smarter with practical AI solutions built around their specific needs.
             </p>
             <div className="flex gap-3">
@@ -74,7 +74,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {NAV_LINKS.slice(1).map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-[#D9FFFD]/70 hover:text-white transition-colors text-sm">
+                  <Link href={link.href} className="text-[#ede9fe]/70 hover:text-white transition-colors text-sm">
                     {link.label}
                   </Link>
                 </li>
@@ -88,7 +88,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {services.map((s) => (
                 <li key={s.href}>
-                  <Link href={s.href} className="text-[#D9FFFD]/70 hover:text-white transition-colors text-sm">
+                  <Link href={s.href} className="text-[#ede9fe]/70 hover:text-white transition-colors text-sm">
                     {s.label}
                   </Link>
                 </li>
@@ -101,20 +101,20 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-5 text-sm uppercase tracking-wider">Get in Touch</h3>
             <ul className="space-y-4">
               <li>
-                <a href={PHONE_HREF} className="flex items-center gap-3 text-[#D9FFFD]/70 hover:text-white transition-colors text-sm">
-                  <Phone className="w-4 h-4 shrink-0 text-[#D9FFFD]" />
+                <a href={PHONE_HREF} className="flex items-center gap-3 text-[#ede9fe]/70 hover:text-white transition-colors text-sm">
+                  <Phone className="w-4 h-4 shrink-0 text-[#ede9fe]" />
                   {PHONE}
                 </a>
               </li>
               <li>
-                <a href={EMAIL_HREF} className="flex items-center gap-3 text-[#D9FFFD]/70 hover:text-white transition-colors text-sm break-all">
-                  <Mail className="w-4 h-4 shrink-0 text-[#D9FFFD]" />
+                <a href={EMAIL_HREF} className="flex items-center gap-3 text-[#ede9fe]/70 hover:text-white transition-colors text-sm break-all">
+                  <Mail className="w-4 h-4 shrink-0 text-[#ede9fe]" />
                   {EMAIL}
                 </a>
               </li>
               <li>
-                <div className="flex items-start gap-3 text-[#D9FFFD]/70 text-sm">
-                  <MapPin className="w-4 h-4 shrink-0 text-[#D9FFFD] mt-0.5" />
+                <div className="flex items-start gap-3 text-[#ede9fe]/70 text-sm">
+                  <MapPin className="w-4 h-4 shrink-0 text-[#ede9fe] mt-0.5" />
                   <span>{LOCATION}<br />Serving {REGION}</span>
                 </div>
               </li>
@@ -125,7 +125,7 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[#D9FFFD]/50 text-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-[#ede9fe]/50 text-sm">
           <p>© {year} {COMPANY_FULL_NAME}. All rights reserved.</p>
           <p>Locally owned and operated in {LOCATION}</p>
         </div>
